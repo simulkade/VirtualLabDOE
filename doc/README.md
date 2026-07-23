@@ -1,6 +1,6 @@
-# DownstreamDOE — Monograph
+# VlabDOE — Monograph
 
-A detailed, book-length treatment of the science inside the `DownstreamDOE`
+A detailed, book-length treatment of the science inside the `VlabDOE`
 package, in two parts.
 
 **Part I — Foundations** brings a reader strong in one parent discipline up to
@@ -38,7 +38,7 @@ speed in the other:
 
 Every figure is generated **directly from the package source** —
 `scripts/make_figures.py` for Part II and `scripts/make_foundations_figures.py`
-for Part I (from the `downstream_doe.foundations` teaching module). The plots are
+for Part I (from the `vlab_doe.foundations` teaching module). The plots are
 real numerical solutions of the models in the text, not schematics.
 
 ## Layout

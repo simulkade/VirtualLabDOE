@@ -20,7 +20,7 @@ The posterior predictive propagation uses Monte-Carlo:
 3. Compute the mean and variance of the resulting ensemble.
 
 The ``posterior`` argument accepts any ``arviz.InferenceData`` object with a
-``posterior`` group, as returned by :func:`downstream_doe.uq.inverse.estimate_bayesian`.
+``posterior`` group, as returned by :func:`vlab_doe.uq.inverse.estimate_bayesian`.
 """
 
 from __future__ import annotations
@@ -45,7 +45,7 @@ def decompose_uncertainty(
     ----------
     posterior:
         Posterior samples (``arviz.InferenceData`` from
-        :func:`downstream_doe.uq.inverse.estimate_bayesian`).
+        :func:`vlab_doe.uq.inverse.estimate_bayesian`).
     forward:
         Mechanistic forward model: ``params: dict[str, float]`` → ``np.ndarray``.
     noise_sd:

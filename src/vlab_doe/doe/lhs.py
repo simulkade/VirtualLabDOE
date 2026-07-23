@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import qmc
 
-from downstream_doe.doe.factorial import Factor
+from vlab_doe.doe.factorial import Factor
 
 
 def latin_hypercube(

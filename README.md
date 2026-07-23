@@ -1,4 +1,4 @@
-# DownstreamDOE
+# VlabDOE
 
 **A virtual laboratory for downstream-bioprocess characterization and advanced Design of Experiments (DoE).**
 
@@ -14,7 +14,7 @@
 
 <p align="center"><em>A book-length treatment of the science inside the package — every figure generated directly from the source.<br>Download the typeset <strong>PDF</strong>, or read the <strong>HTML</strong> edition straight in your browser (figures &amp; styling embedded).</em></p>
 
-DownstreamDOE pairs first-principles process models with a modern DoE / optimization / uncertainty-quantification toolkit. Mechanistic models of **chromatography** and **ultrafiltration/diafiltration (UF/DF)** provide a fully-observable *"Mechanistic Truth"*; a perturbation layer turns that truth into noisy *"Virtual Experiments"*; and classical DoE, Bayesian optimization, and uncertainty quantification are exercised against that known ground truth. Because the truth is known, every method can be benchmarked for accuracy, efficiency, and robustness — something impossible with real wet-lab data alone.
+VlabDOE pairs first-principles process models with a modern DoE / optimization / uncertainty-quantification toolkit. Mechanistic models of **chromatography** and **ultrafiltration/diafiltration (UF/DF)** provide a fully-observable *"Mechanistic Truth"*; a perturbation layer turns that truth into noisy *"Virtual Experiments"*; and classical DoE, Bayesian optimization, and uncertainty quantification are exercised against that known ground truth. Because the truth is known, every method can be benchmarked for accuracy, efficiency, and robustness — something impossible with real wet-lab data alone.
 
 The workflow mirrors a real **QbD / process-characterization** campaign: define critical process parameters (CPPs), screen them with a factorial design, map the design space with space-filling sampling, drive toward an optimum with Bayesian optimization, and finally quantify how much of the residual uncertainty is reducible (epistemic) versus irreducible process noise (aleatoric).
 
@@ -47,7 +47,7 @@ The mathematical derivation and engineering rationale behind every module are do
 
 ## Installation
 
-DownstreamDOE targets **Python ≥ 3.13** and uses [`uv`](https://docs.astral.sh/uv/) for environment management.
+VlabDOE targets **Python ≥ 3.13** and uses [`uv`](https://docs.astral.sh/uv/) for environment management.
 
 ```bash
 # clone, then from the repo root:
@@ -62,8 +62,8 @@ pip install -e .        # or: uv pip install -e .
 ```
 
 ```python
-import downstream_doe          # the importable package
-print(downstream_doe.__version__)
+import vlab_doe          # the importable package
+print(vlab_doe.__version__)
 ```
 
 ---
@@ -74,7 +74,7 @@ Run a single virtual chromatography experiment and read off its performance metr
 
 ```python
 import numpy as np
-from downstream_doe.models.chromatography import (
+from vlab_doe.models.chromatography import (
     ColumnGeometry, SMAParameters, ChromatographyConfig, simulate, pool_metrics,
 )
 
@@ -122,7 +122,7 @@ Each phase of the workflow has a self-contained notebook (`uv run jupyter lab`):
 ## Project layout
 
 ```
-src/downstream_doe/   installable package (config, viz, perturbation, models, doe, optimization, uq)
+src/vlab_doe/   installable package (config, viz, perturbation, models, doe, optimization, uq)
 notebooks/            one notebook per phase
 tests/                pytest suite
 reports/              tech-transfer report (Phase 5 deliverable)

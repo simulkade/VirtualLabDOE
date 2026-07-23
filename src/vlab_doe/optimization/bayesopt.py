@@ -36,9 +36,9 @@ import torch
 from botorch.acquisition import LogExpectedImprovement
 from botorch.optim import optimize_acqf
 
-from downstream_doe.doe.factorial import Factor
-from downstream_doe.doe.lhs import latin_hypercube
-from downstream_doe.optimization.surrogate import GPSurrogate
+from vlab_doe.doe.factorial import Factor
+from vlab_doe.doe.lhs import latin_hypercube
+from vlab_doe.optimization.surrogate import GPSurrogate
 
 
 @dataclass(frozen=True)

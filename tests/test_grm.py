@@ -11,7 +11,7 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from downstream_doe.models.chromatography import (
+from vlab_doe.models.chromatography import (
     ColumnGeometry,
     ElutionProgram,
     Injection,

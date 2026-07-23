@@ -1,6 +1,6 @@
 # Implementation Notes
 
-This document records the mathematical reasoning and engineering decisions behind every module in `src/downstream_doe/`.  Read it alongside `plan.md` (the *what*) and the individual source files (the *how*).
+This document records the mathematical reasoning and engineering decisions behind every module in `src/vlab_doe/`.  Read it alongside `plan.md` (the *what*) and the individual source files (the *how*).
 
 ---
 
@@ -95,7 +95,7 @@ where `c_feed = 1 g/L` is fixed (a representative chromatography feed).
 The single-component isocratic model above (`legacy.py`, kept verbatim for backward
 compatibility) is generalised into a **transport-dispersive engine** (`engine.py`) that
 covers every common downstream mode and supports **gradient elution**.  The original module
-is now a package; `from downstream_doe.models.chromatography import …` resolves the same
+is now a package; `from vlab_doe.models.chromatography import …` resolves the same
 legacy names plus the new API.
 
 #### Unified governing equations (linear driving force)

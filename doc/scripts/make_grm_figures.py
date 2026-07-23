@@ -36,11 +36,11 @@ plt.rcParams.update({
 })
 C = {"mol": "#d62728", "grm": "#1f77b4", "mod": "#7f7f7f"}
 
-from downstream_doe.models.chromatography import (  # noqa: E402
+from vlab_doe.models.chromatography import (  # noqa: E402
     ColumnGeometry, ColumnSetup, ElutionProgram, Injection, cation_exchange,
     run_column,
 )
-from downstream_doe.models.chromatography.grm import (  # noqa: E402
+from vlab_doe.models.chromatography.grm import (  # noqa: E402
     GRMSetup, ParticleProperties, run_grm,
 )
 

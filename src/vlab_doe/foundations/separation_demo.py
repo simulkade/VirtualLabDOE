@@ -16,7 +16,7 @@ Four ideas underpin every later chapter and are built here from scratch:
    the living unit operation of Chapter 5.  See :func:`monod_batch`.
 
 These are teaching reductions of the full models in
-:mod:`downstream_doe.models`; they share the vocabulary but not the machinery.
+:mod:`vlab_doe.models`; they share the vocabulary but not the machinery.
 """
 
 from __future__ import annotations

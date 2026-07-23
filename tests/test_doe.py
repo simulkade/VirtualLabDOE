@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from downstream_doe.doe.factorial import Factor, full_factorial, run_design
-from downstream_doe.doe.lhs import latin_hypercube, coverage_metrics
+from vlab_doe.doe.factorial import Factor, full_factorial, run_design
+from vlab_doe.doe.lhs import latin_hypercube, coverage_metrics
 
 FACTORS = [
     Factor("pH", 5.0, 7.0),
@@ -134,7 +134,7 @@ def _glm_synthetic(seed=0, n=120):
 
 
 def test_fit_glm_logistic_predicts_probabilities():
-    from downstream_doe.doe.analysis import fit_glm_response, predict_glm_grid
+    from vlab_doe.doe.analysis import fit_glm_response, predict_glm_grid
 
     df = _glm_synthetic()
     res = fit_glm_response(df, "passed", ["pH", "gradient_cv"], family="binomial")
@@ -151,7 +151,7 @@ def test_fit_glm_logistic_predicts_probabilities():
 
 
 def test_fit_glm_poisson_predicts_nonnegative_rates():
-    from downstream_doe.doe.analysis import fit_glm_response, predict_glm_grid
+    from vlab_doe.doe.analysis import fit_glm_response, predict_glm_grid
 
     df = _glm_synthetic()
     res = fit_glm_response(df, "contam", ["pH", "gradient_cv"], family="poisson")
@@ -161,7 +161,7 @@ def test_fit_glm_poisson_predicts_nonnegative_rates():
 
 
 def test_fit_glm_rejects_unknown_family():
-    from downstream_doe.doe.analysis import fit_glm_response
+    from vlab_doe.doe.analysis import fit_glm_response
 
     df = _glm_synthetic()
     with pytest.raises(ValueError):

@@ -1,10 +1,10 @@
-"""Tests for downstream_doe.doe.multivariate (PCA and PLS)."""
+"""Tests for vlab_doe.doe.multivariate (PCA and PLS)."""
 
 import numpy as np
 import pandas as pd
 import pytest
 
-from downstream_doe.doe.multivariate import pca_analysis, pls_analysis
+from vlab_doe.doe.multivariate import pca_analysis, pls_analysis
 
 # ── Shared fixture ─────────────────────────────────────────────────────────────
 

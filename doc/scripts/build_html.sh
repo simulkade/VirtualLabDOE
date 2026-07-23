@@ -47,7 +47,7 @@ pandoc main.tex \
   --toc --toc-depth=2 \
   --number-sections \
   --mathjax="$MATHJAX_URL" \
-  --metadata title="DownstreamDOE — A Monograph" \
+  --metadata title="VlabDOE — A Monograph" \
   --resource-path=".:figures" \
   --css="monograph.css" \
   --output="$OUT_DIR/monograph.html"

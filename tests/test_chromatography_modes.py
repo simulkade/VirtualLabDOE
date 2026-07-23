@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from downstream_doe.models import chromatography as chrom
+from vlab_doe.models import chromatography as chrom
 
 GEOM = chrom.ColumnGeometry(length=0.1, diameter=0.01, porosity=0.4)
 

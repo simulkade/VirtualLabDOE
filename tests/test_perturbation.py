@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from downstream_doe.config import make_rng
-from downstream_doe import perturbation as pert
+from vlab_doe.config import make_rng
+from vlab_doe import perturbation as pert
 
 
 def test_make_rng_is_reproducible():

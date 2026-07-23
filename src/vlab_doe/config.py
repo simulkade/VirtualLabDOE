@@ -11,7 +11,7 @@ from pathlib import Path
 
 import numpy as np
 
-# Repo root = two levels up from this file (src/downstream_doe/config.py -> repo/).
+# Repo root = two levels up from this file (src/vlab_doe/config.py -> repo/).
 ROOT_DIR: Path = Path(__file__).resolve().parents[2]
 DATA_DIR: Path = ROOT_DIR / "data"
 RAW_DATA_DIR: Path = DATA_DIR / "raw"

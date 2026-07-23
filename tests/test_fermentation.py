@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from downstream_doe.config import make_rng
-from downstream_doe.models import fermentation as ferm
+from vlab_doe.config import make_rng
+from vlab_doe.models import fermentation as ferm
 
 
 def _grid(t_end: float = 12.0, n: int = 481) -> np.ndarray:

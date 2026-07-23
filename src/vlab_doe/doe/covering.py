@@ -64,7 +64,7 @@ class CoveringArrayDesign:
     def to_dataframe(self, *, prefix: str = "x") -> pd.DataFrame:
         """Presence table: one boolean column per item plus a ``members`` summary column.
 
-        Mirrors :func:`downstream_doe.doe.factorial.full_factorial` output (one row per run,
+        Mirrors :func:`vlab_doe.doe.factorial.full_factorial` output (one row per run,
         a ``run_type`` column) so it flows through the same downstream tooling.
         """
         names = self.names() if self.item_names else [f"{prefix}{i:02d}" for i in range(self.n_items)]
@@ -142,7 +142,7 @@ def covering_array(
         Coverage strength ``t``: every ``t``-subset of items is targeted for co-occurrence in
         at least one run.  ``2`` (pairs) is the default.
     seed:
-        Seed for tie-breaking / size draws (via :func:`downstream_doe.config.make_rng`).
+        Seed for tie-breaking / size draws (via :func:`vlab_doe.config.make_rng`).
 
     Returns
     -------

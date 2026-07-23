@@ -2,7 +2,7 @@
 
 These modules are deliberately small, dependency-light (NumPy/SciPy only), and
 written to be *read*.  They re-derive, from scratch, the handful of statistical
-and separation-science ideas that the rest of :mod:`downstream_doe` takes for
+and separation-science ideas that the rest of :mod:`vlab_doe` takes for
 granted, so that a reader can move from the equations in Part I of the
 monograph straight to a runnable implementation and back.
 
@@ -11,10 +11,10 @@ faster code paths.  Their job is pedagogical: every figure in the two
 foundations chapters is generated from the functions here, keeping the book's
 promise that nothing in it is a schematic.
 
-* :mod:`downstream_doe.foundations.stats_demo` -- probability, least squares,
+* :mod:`vlab_doe.foundations.stats_demo` -- probability, least squares,
   the bootstrap, and the decomposition of variance into "between-batch" and
   "within-batch" parts.
-* :mod:`downstream_doe.foundations.separation_demo` -- adsorption isotherms,
+* :mod:`vlab_doe.foundations.separation_demo` -- adsorption isotherms,
   the tanks-in-series picture of a column, peak resolution, and batch
   microbial growth.
 """

@@ -13,7 +13,7 @@ Two layers share one isotherm vocabulary:
 
 Quick start::
 
-    from downstream_doe.models import chromatography as chrom
+    from vlab_doe.models import chromatography as chrom
 
     iso = chrom.cation_exchange(beta=[5e-3, 8e-3], nu=[4.0, 5.0], q_max=120.0)
     inj = chrom.Injection.from_load_density(load_density=15.0, feed=[0.5, 0.5],

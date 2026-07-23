@@ -2,12 +2,12 @@
 
 *Investigation + implementation notes — 2026-06-16*
 
-This note reviews `src/downstream_doe/models/chromatography/grm.py` (the
+This note reviews `src/vlab_doe/models/chromatography/grm.py` (the
 finite-volume General Rate Model) against the PyFVTool API and records two
 things:
 
 1. **What is now implemented in this package** — a repo-local assembly layer
-   (`src/downstream_doe/models/chromatography/coupling.py`) that removes the hand
+   (`src/vlab_doe/models/chromatography/coupling.py`) that removes the hand
    bookkeeping from the GRM, plus the tier-1 use of PyFVTool's own
    `transientTerm`.
 2. **What is deliberately deferred** — a separate list of pieces that *could*

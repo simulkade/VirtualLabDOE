@@ -52,13 +52,13 @@ pandoc main.tex \
   --standalone --embed-resources \
   --toc --toc-depth=2 --number-sections \
   --mathjax="$MATHJAX_URL" \
-  --metadata title="DownstreamDOE — A Monograph" \
+  --metadata title="VlabDOE — A Monograph" \
   --resource-path=".:figures" \
   --css="scripts/monograph.css" \
   --output="$REL_DIR/monograph.html"
 
 # --- 4. GitHub release -------------------------------------------------------
-TITLE="DownstreamDOE Monograph $TAG"
+TITLE="VlabDOE Monograph $TAG"
 NOTES=$(cat <<EOF
 Downloadable monograph build.
 

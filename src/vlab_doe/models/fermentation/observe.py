@@ -1,7 +1,7 @@
 """Turn the clean pH truth into a measured pH series.
 
 The fermentation model's only observable is pH, sampled by a probe at discrete times.  This
-module is a thin adapter onto the project-wide :mod:`downstream_doe.perturbation` layer, so the
+module is a thin adapter onto the project-wide :mod:`vlab_doe.perturbation` layer, so the
 pH measurement gets the same additive-noise / calibration-bias treatment as every other
 virtual measurement in the lab.  Batch-to-batch *biological* variability is handled separately
 in :mod:`.variability`; here we add only the *measurement* (epistemic) noise.
@@ -28,7 +28,7 @@ def observe_ph(
     """Sample the pH curve at ``sample_times`` and add measurement noise.
 
     The clean pH is linearly interpolated onto the (typically coarser) probe sampling grid,
-    then :func:`downstream_doe.perturbation.add_measurement_noise` applies additive noise,
+    then :func:`vlab_doe.perturbation.add_measurement_noise` applies additive noise,
     drift and calibration bias.
 
     Parameters

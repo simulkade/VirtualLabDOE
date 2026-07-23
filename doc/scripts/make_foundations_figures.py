@@ -1,7 +1,7 @@
 """Generate the figures for the two *Foundations* chapters (Part I).
 
 Like :mod:`make_figures`, every figure is produced from the *actual* package
-code -- here the teaching modules in :mod:`downstream_doe.foundations` -- inside
+code -- here the teaching modules in :mod:`vlab_doe.foundations` -- inside
 its own ``try/except`` so one failure never aborts the build.
 
 Run from anywhere::
@@ -135,7 +135,7 @@ def fig_distributions():
 # ── 2. Ordinary least squares ─────────────────────────────────────────────────
 @figure
 def fig_ols():
-    from downstream_doe.foundations.stats_demo import ols_fit
+    from vlab_doe.foundations.stats_demo import ols_fit
 
     rng = np.random.default_rng(7)
     x = np.linspace(0, 10, 24)
@@ -174,7 +174,7 @@ def fig_ols():
 # ── 3. The bootstrap ──────────────────────────────────────────────────────────
 @figure
 def fig_bootstrap():
-    from downstream_doe.foundations.stats_demo import bootstrap_ci
+    from vlab_doe.foundations.stats_demo import bootstrap_ci
 
     rng = np.random.default_rng(11)
     # A small, skewed sample — exactly where a textbook normal CI is shaky.
@@ -211,7 +211,7 @@ def fig_bootstrap():
 # ── 4. Variability versus uncertainty (variance components) ───────────────────
 @figure
 def fig_variance():
-    from downstream_doe.foundations.stats_demo import variance_components
+    from vlab_doe.foundations.stats_demo import variance_components
 
     rng = np.random.default_rng(5)
     k, m = 8, 6
@@ -245,7 +245,7 @@ def fig_variance():
 # ── 5. Generalized linear models: logistic regression ─────────────────────────
 @figure
 def fig_glm():
-    from downstream_doe.foundations.stats_demo import logistic_fit, ols_fit, sigmoid
+    from vlab_doe.foundations.stats_demo import logistic_fit, ols_fit, sigmoid
 
     rng = np.random.default_rng(4)
     # A binary outcome (e.g. "did the blend set?") driven by one predictor.
@@ -280,7 +280,7 @@ def fig_glm():
 # ── 6. Regularization: ridge shrinks, the lasso selects ───────────────────────
 @figure
 def fig_regularization():
-    from downstream_doe.foundations.stats_demo import coefficient_path
+    from vlab_doe.foundations.stats_demo import coefficient_path
 
     rng = np.random.default_rng(8)
     n, p = 50, 8
@@ -409,7 +409,7 @@ def fig_bioprocess():
 # ── 6. The adsorption isotherm ────────────────────────────────────────────────
 @figure
 def fig_isotherm():
-    from downstream_doe.foundations.separation_demo import henry, langmuir
+    from vlab_doe.foundations.separation_demo import henry, langmuir
 
     q_max, b = 50.0, 0.04
     H = q_max * b                       # initial slope = Henry constant
@@ -439,7 +439,7 @@ def fig_isotherm():
 # ── 7. Plates: breakthrough sharpness and peak resolution ─────────────────────
 @figure
 def fig_column():
-    from downstream_doe.foundations.separation_demo import (
+    from vlab_doe.foundations.separation_demo import (
         gaussian_peak,
         resolution,
         tanks_in_series_breakthrough,
@@ -477,7 +477,7 @@ def fig_column():
 # ── 8. Batch microbial growth ─────────────────────────────────────────────────
 @figure
 def fig_growth():
-    from downstream_doe.foundations.separation_demo import monod_batch
+    from vlab_doe.foundations.separation_demo import monod_batch
 
     gc = monod_batch()
 

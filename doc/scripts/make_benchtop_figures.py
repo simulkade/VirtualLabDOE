@@ -76,7 +76,7 @@ def figure(fn):
 # ── 1. Pipe: the pressure-drop characteristic and its two regimes ─────────────
 @figure
 def fig_pipe_characteristic():
-    from downstream_doe.models.benchtop import pipe_flow as pf
+    from vlab_doe.models.benchtop import pipe_flow as pf
 
     q = np.linspace(2e-7, 6e-4, 400)
     curve = pf.flow_curve(q, diameter=4e-3, length=1.0, temperature=20.0)
@@ -114,9 +114,9 @@ def fig_pipe_characteristic():
 # ── 2. Pipe: a factorial reveals power-law exponents as log-linear effects ────
 @figure
 def fig_pipe_effects():
-    from downstream_doe.doe.analysis import fit_response_model
-    from downstream_doe.doe.factorial import Factor, full_factorial, run_design
-    from downstream_doe.models.benchtop import pipe_flow as pf
+    from vlab_doe.doe.analysis import fit_response_model
+    from vlab_doe.doe.factorial import Factor, full_factorial, run_design
+    from vlab_doe.models.benchtop import pipe_flow as pf
 
     factors = [
         Factor("logQ", np.log(1e-6), np.log(4e-6)),
@@ -160,7 +160,7 @@ def fig_pipe_effects():
 # ── 3. Falling ball: calibration curve and the inertial bias ──────────────────
 @figure
 def fig_falling_ball():
-    from downstream_doe.models.benchtop import falling_ball as fb
+    from vlab_doe.models.benchtop import falling_ball as fb
 
     mus = np.logspace(-1, 1.0, 40)  # 0.1 .. 10 Pa·s
     def cfg(mu, d=2e-3):
@@ -194,7 +194,7 @@ def fig_falling_ball():
 # ── 4. Back extrusion: yogurt texture — speed, yield stress, temperature ──────
 @figure
 def fig_back_extrusion():
-    from downstream_doe.models.benchtop import back_extrusion as be
+    from vlab_doe.models.benchtop import back_extrusion as be
 
     hb = be.HerschelBulkley(consistency=20.0, flow_index=0.4, yield_stress=30.0)
     speeds = np.linspace(0.2e-3, 5e-3, 40)
@@ -230,7 +230,7 @@ def fig_back_extrusion():
 # ── 5. Ester hydrolysis: kinetics, catalyst vs. equilibrium, van 't Hoff ──────
 @figure
 def fig_ester_kinetics():
-    from downstream_doe.models.benchtop import ester_hydrolysis as eh
+    from vlab_doe.models.benchtop import ester_hydrolysis as eh
 
     t = np.linspace(0, 8 * 3600, 400)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.1))
@@ -262,7 +262,7 @@ def fig_ester_kinetics():
 # ── 6. Ester DoE: a response surface of conversion in (T, time) ───────────────
 @figure
 def fig_ester_surface():
-    from downstream_doe.models.benchtop import ester_hydrolysis as eh
+    from vlab_doe.models.benchtop import ester_hydrolysis as eh
 
     temps = np.linspace(20.0, 55.0, 45)
     hours = np.linspace(0.5, 8.0, 45)
@@ -291,12 +291,12 @@ def fig_student_workflow():
     """The full design--run--analyse cycle a student would follow on the ester
     system, using the package's own factorial, perturbation, and analysis code."""
     import pandas as pd  # noqa: F401
-    from downstream_doe.config import make_rng
-    from downstream_doe import perturbation as pert
-    from downstream_doe.doe.analysis import (fit_response_model,
+    from vlab_doe.config import make_rng
+    from vlab_doe import perturbation as pert
+    from vlab_doe.doe.analysis import (fit_response_model,
                                              proven_acceptable_ranges)
-    from downstream_doe.doe.factorial import Factor, full_factorial, run_design
-    from downstream_doe.models.benchtop import ester_hydrolysis as eh
+    from vlab_doe.doe.factorial import Factor, full_factorial, run_design
+    from vlab_doe.models.benchtop import ester_hydrolysis as eh
 
     rng = make_rng(7)
     factors = [Factor("temperature", 25.0, 50.0),

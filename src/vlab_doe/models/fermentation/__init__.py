@@ -18,7 +18,7 @@ Three layers of randomness are modelled explicitly:
 Quick start::
 
     import numpy as np
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.models import fermentation as ferm
 
     setup = ferm.FermentationSetup(
         consortium=ferm.yogurt_blend(fraction_st=0.6, fraction_lb=0.4),

@@ -1,4 +1,4 @@
-# Makefile for the DownstreamDOE monograph.
+# Makefile for the VlabDOE monograph.
 #
 #   make            # figures + PDF + HTML
 #   make pdf        # build/monograph.pdf

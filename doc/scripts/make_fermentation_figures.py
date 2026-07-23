@@ -75,7 +75,7 @@ def figure(fn):
 # ── 1. The acidification curve and its hidden states ──────────────────────────
 @figure
 def fig_ferm_acidification():
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.models import fermentation as ferm
 
     setup = ferm.FermentationSetup(consortium=ferm.yogurt_blend(0.5, 0.5), temperature=43.0)
     r = ferm.run_fermentation(setup, T_GRID)
@@ -103,9 +103,9 @@ def fig_ferm_acidification():
 # ── 2. The three sub-models: temperature, lag, buffering ──────────────────────
 @figure
 def fig_ferm_submodels():
-    from downstream_doe.models import fermentation as ferm
-    from downstream_doe.models.fermentation.kinetics import baranyi_alpha
-    from downstream_doe.models.fermentation.milk import Milk, ph_from_acid
+    from vlab_doe.models import fermentation as ferm
+    from vlab_doe.models.fermentation.kinetics import baranyi_alpha
+    from vlab_doe.models.fermentation.milk import Milk, ph_from_acid
 
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.6))
 
@@ -150,7 +150,7 @@ def fig_ferm_submodels():
 # ── 3. Strain personalities and proto-cooperation ─────────────────────────────
 @figure
 def fig_ferm_cooperation():
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.models import fermentation as ferm
 
     cases = [
         ("S. thermophilus alone", ferm.single_strain(ferm.streptococcus_thermophilus()), C["st"], "-"),
@@ -172,8 +172,8 @@ def fig_ferm_cooperation():
 # ── 4. Uncertainty vs variability vs process noise ────────────────────────────
 @figure
 def fig_ferm_uncertainty():
-    from downstream_doe.config import make_rng
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.config import make_rng
+    from vlab_doe.models import fermentation as ferm
 
     rng = make_rng(7)
     setup = ferm.FermentationSetup(consortium=ferm.yogurt_blend(), temperature=43.0)
@@ -207,7 +207,7 @@ def fig_ferm_uncertainty():
 # ── 5. Covering-array coverage growth and block-size effect ───────────────────
 @figure
 def fig_ferm_covering():
-    from downstream_doe.doe.covering import covering_array
+    from vlab_doe.doe.covering import covering_array
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.0))
 
@@ -239,13 +239,13 @@ def fig_ferm_covering():
 # ── 6. Tree-model importance recovers the strong acidifiers ───────────────────
 @figure
 def fig_ferm_importance():
-    from downstream_doe.config import make_rng
-    from downstream_doe.doe.covering import covering_array
-    from downstream_doe.doe.importance import (
+    from vlab_doe.config import make_rng
+    from vlab_doe.doe.covering import covering_array
+    from vlab_doe.doe.importance import (
         gradient_boosting_importance,
         random_forest_importance,
     )
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.models import fermentation as ferm
 
     rng = make_rng(2026)
     lib = ferm.random_strain_library(50, rng)
@@ -297,13 +297,13 @@ def fig_ferm_importance():
 # ── 7. Regularized linear + logistic (GLM) recover the same strains ───────────
 @figure
 def fig_ferm_regularized():
-    from downstream_doe.config import make_rng
-    from downstream_doe.doe.covering import covering_array
-    from downstream_doe.doe.importance import (
+    from vlab_doe.config import make_rng
+    from vlab_doe.doe.covering import covering_array
+    from vlab_doe.doe.importance import (
         logistic_screening,
         regularized_importance,
     )
-    from downstream_doe.models import fermentation as ferm
+    from vlab_doe.models import fermentation as ferm
 
     # Identical screen to fig_ferm_importance (same seeds), so the chapters agree.
     rng = make_rng(2026)

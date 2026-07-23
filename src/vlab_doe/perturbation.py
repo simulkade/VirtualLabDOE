@@ -7,7 +7,7 @@ Converts the *Mechanistic Truth* produced by the forward models into a
 * **Systematic effects** — linear baseline drift and constant calibration bias.
 * **Batch-to-batch effects** — lognormal jitter on true model parameters.
 
-Everything is seedable via :func:`downstream_doe.config.make_rng` so noisy replicates
+Everything is seedable via :func:`vlab_doe.config.make_rng` so noisy replicates
 are reproducible across runs with the same seed.
 """
 
@@ -68,7 +68,7 @@ def add_measurement_noise(
     noise:
         Noise configuration.
     rng:
-        Seeded NumPy generator (from :func:`downstream_doe.config.make_rng`).
+        Seeded NumPy generator (from :func:`vlab_doe.config.make_rng`).
     """
     x = np.asarray(x, dtype=float)
     result = np.asarray(signal, dtype=float).copy()

@@ -9,12 +9,12 @@ structure or parameter.
 import numpy as np
 import pytest
 
-from downstream_doe.doe.analysis import fit_response_model
-from downstream_doe.doe.factorial import Factor, full_factorial, run_design
-from downstream_doe.models.benchtop import back_extrusion as be
-from downstream_doe.models.benchtop import ester_hydrolysis as eh
-from downstream_doe.models.benchtop import falling_ball as fb
-from downstream_doe.models.benchtop import pipe_flow as pf
+from vlab_doe.doe.analysis import fit_response_model
+from vlab_doe.doe.factorial import Factor, full_factorial, run_design
+from vlab_doe.models.benchtop import back_extrusion as be
+from vlab_doe.models.benchtop import ester_hydrolysis as eh
+from vlab_doe.models.benchtop import falling_ball as fb
+from vlab_doe.models.benchtop import pipe_flow as pf
 
 
 # ── Pipe flow ─────────────────────────────────────────────────────────────────

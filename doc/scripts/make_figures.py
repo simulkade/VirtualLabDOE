@@ -79,7 +79,7 @@ def figure(fn):
 # ── 1. Modulator affinity laws b(m) for the three modes ───────────────────────
 @figure
 def fig_affinity_laws():
-    from downstream_doe.models.chromatography.isotherms import (
+    from vlab_doe.models.chromatography.isotherms import (
         LinearSolventStrengthLaw,
         SaltingOutLaw,
         SMALaw,
@@ -112,7 +112,7 @@ def fig_affinity_laws():
 # ── 2. Henry constant surface H(salt, pH) for SMA ─────────────────────────────
 @figure
 def fig_henry_surface():
-    from downstream_doe.models.chromatography.isotherms import (
+    from vlab_doe.models.chromatography.isotherms import (
         SMAParameters,
         sma_henry_constant,
     )
@@ -144,7 +144,7 @@ def fig_henry_surface():
 # ── 3. CEX linear-gradient chromatogram with the modulator overlay ────────────
 @figure
 def fig_cex_gradient():
-    from downstream_doe.models.chromatography import (
+    from vlab_doe.models.chromatography import (
         ColumnGeometry,
         ColumnSetup,
         ElutionProgram,
@@ -186,7 +186,7 @@ def fig_cex_gradient():
 # ── 4. Gradient-slope effect: the resolution / dilution trade-off ─────────────
 @figure
 def fig_gradient_slope():
-    from downstream_doe.models.chromatography import (
+    from vlab_doe.models.chromatography import (
         ColumnGeometry,
         ColumnSetup,
         ElutionProgram,
@@ -194,7 +194,7 @@ def fig_gradient_slope():
         cation_exchange,
         run_column,
     )
-    from downstream_doe.models.chromatography.metrics import peak_moments, plate_count
+    from vlab_doe.models.chromatography.metrics import peak_moments, plate_count
 
     geom = ColumnGeometry(length=0.1, diameter=0.01, porosity=0.4)
     fig, ax1 = plt.subplots(figsize=(7.4, 4.2))
@@ -233,8 +233,8 @@ def fig_gradient_slope():
 # ── 5. LHS vs random space-filling ────────────────────────────────────────────
 @figure
 def fig_lhs_vs_random():
-    from downstream_doe.doe.factorial import Factor
-    from downstream_doe.doe.lhs import coverage_metrics, latin_hypercube
+    from vlab_doe.doe.factorial import Factor
+    from vlab_doe.doe.lhs import coverage_metrics, latin_hypercube
 
     factors = [Factor("pH", 4.0, 8.0), Factor("salt", 50.0, 600.0)]
     n = 20
@@ -291,8 +291,8 @@ def fig_factorial_cube():
 @figure
 def fig_bo_convergence():
     # A cheap, deterministic 2-D oracle so the figure is fast and reproducible.
-    from downstream_doe.doe.factorial import Factor, full_factorial, run_design
-    from downstream_doe.optimization.bayesopt import (
+    from vlab_doe.doe.factorial import Factor, full_factorial, run_design
+    from vlab_doe.optimization.bayesopt import (
         Objective,
         bayesian_optimization,
         compare_to_doe,
@@ -339,10 +339,10 @@ def fig_chrom_glm():
     """
     import pandas as pd
 
-    from downstream_doe.doe.analysis import fit_glm_response, predict_glm_grid
-    from downstream_doe.doe.factorial import Factor
-    from downstream_doe.doe.lhs import latin_hypercube
-    from downstream_doe.models.chromatography import (
+    from vlab_doe.doe.analysis import fit_glm_response, predict_glm_grid
+    from vlab_doe.doe.factorial import Factor
+    from vlab_doe.doe.lhs import latin_hypercube
+    from vlab_doe.models.chromatography import (
         ColumnGeometry,
         ColumnSetup,
         ElutionProgram,
@@ -350,7 +350,7 @@ def fig_chrom_glm():
         cation_exchange,
         run_column,
     )
-    from downstream_doe.models.chromatography.metrics import peak_moments, pool_metrics
+    from vlab_doe.models.chromatography.metrics import peak_moments, pool_metrics
 
     geom = ColumnGeometry(length=0.1, diameter=0.01, porosity=0.4)
     nu = [3.00, 2.93, 3.07, 3.14]          # target + 3 close charge variants
@@ -432,11 +432,11 @@ def fig_capture_glm():
     """
     import pandas as pd
 
-    from downstream_doe.config import make_rng
-    from downstream_doe.doe.analysis import fit_glm_response, predict_glm_grid
-    from downstream_doe.doe.factorial import Factor
-    from downstream_doe.doe.lhs import latin_hypercube
-    from downstream_doe.models.chromatography import (
+    from vlab_doe.config import make_rng
+    from vlab_doe.doe.analysis import fit_glm_response, predict_glm_grid
+    from vlab_doe.doe.factorial import Factor
+    from vlab_doe.doe.lhs import latin_hypercube
+    from vlab_doe.models.chromatography import (
         ColumnGeometry,
         ColumnSetup,
         ElutionProgram,
@@ -445,7 +445,7 @@ def fig_capture_glm():
         cation_exchange,
         run_column,
     )
-    from downstream_doe.perturbation import NoiseModel, add_measurement_noise
+    from vlab_doe.perturbation import NoiseModel, add_measurement_noise
 
     L, dia, eps, feed = 0.1, 0.01, 0.4, 5.0
     geom = ColumnGeometry(length=L, diameter=dia, porosity=eps)

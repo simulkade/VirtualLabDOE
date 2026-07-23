@@ -139,7 +139,7 @@ def run_fermentation(
         Output time grid (h); must be increasing and start at the inoculation time.
     rng:
         Generator for process noise.  Required when ``process_noise_sd > 0``; ignored
-        otherwise.  Use :func:`downstream_doe.config.make_rng` for reproducibility.
+        otherwise.  Use :func:`vlab_doe.config.make_rng` for reproducibility.
     """
     t_eval = np.asarray(t_eval, dtype=float)
     kin = make_kinetics(

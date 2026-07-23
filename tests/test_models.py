@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from downstream_doe.models import chromatography as chrom
-from downstream_doe.models import ufdf
+from vlab_doe.models import chromatography as chrom
+from vlab_doe.models import ufdf
 
 
 # ── Chromatography ────────────────────────────────────────────────────────────

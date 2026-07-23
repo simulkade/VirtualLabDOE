@@ -366,7 +366,7 @@ def random_strain_library(
     n:
         Number of strains.
     rng:
-        Seeded generator (from :func:`downstream_doe.config.make_rng`).
+        Seeded generator (from :func:`vlab_doe.config.make_rng`).
     n_cooperative_pairs, n_antagonistic_pairs:
         How many positive / negative interaction pairs to plant.  Default ≈ ``n//5`` and
         ``n//10``.

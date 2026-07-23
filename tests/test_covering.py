@@ -3,13 +3,13 @@
 import numpy as np
 import pytest
 
-from downstream_doe.config import make_rng
-from downstream_doe.doe.covering import covering_array
-from downstream_doe.doe.importance import (
+from vlab_doe.config import make_rng
+from vlab_doe.doe.covering import covering_array
+from vlab_doe.doe.importance import (
     gradient_boosting_importance,
     random_forest_importance,
 )
-from downstream_doe.models import fermentation as ferm
+from vlab_doe.models import fermentation as ferm
 
 
 # ── Covering array ──────────────────────────────────────────────────────────────

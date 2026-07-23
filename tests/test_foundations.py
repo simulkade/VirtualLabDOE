@@ -1,9 +1,9 @@
 """Tests for the Foundations teaching module and the regularized/GLM screening.
 
 Fast, synthetic checks that the from-scratch statistics of
-:mod:`downstream_doe.foundations.stats_demo` are correct, and that the
+:mod:`vlab_doe.foundations.stats_demo` are correct, and that the
 regularized-linear and logistic (GLM) screening analyses added to
-:mod:`downstream_doe.doe.importance` behave as advertised.  These also pin the
+:mod:`vlab_doe.doe.importance` behave as advertised.  These also pin the
 scikit-learn API choices (e.g. the warning-free L1 logistic configuration)
 against future deprecation churn.
 """
@@ -11,14 +11,14 @@ against future deprecation churn.
 import numpy as np
 import pytest
 
-from downstream_doe.doe.importance import (
+from vlab_doe.doe.importance import (
     ImportanceResult,
     LogisticScreenResult,
     logistic_screening,
     regularized_importance,
 )
-from downstream_doe.foundations import separation_demo as sep
-from downstream_doe.foundations import stats_demo as st
+from vlab_doe.foundations import separation_demo as sep
+from vlab_doe.foundations import stats_demo as st
 
 
 # ── stats_demo: least squares, ANOVA, bootstrap, variance components ──────────

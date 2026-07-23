@@ -51,7 +51,7 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 ### Phase 1 — Build the Virtual Laboratory
 *Forward mechanistic models that serve as ground truth for all later synthetic data.*
 
-**1.1 Chromatography** — `src/downstream_doe/models/chromatography.py`
+**1.1 Chromatography** — `src/vlab_doe/models/chromatography.py`
 - **Model:** Equilibrium-Dispersive (ED) model — 1D convection–dispersion PDE per component:
   `∂c/∂t + (1-ε)/ε · ∂q/∂t + u · ∂c/∂z = D_ap · ∂²c/∂z²`
   with binding isotherm `q = f(c)`.
@@ -61,12 +61,12 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 - **Outputs:** outlet chromatogram `c(t)`, multi-component separation, derived **yield / purity / productivity** with configurable pool cut-points.
 - *Stretch:* General Rate Model (film + intraparticle pore diffusion).
 
-**1.2 Ultrafiltration / Diafiltration** — `src/downstream_doe/models/ufdf.py`
+**1.2 Ultrafiltration / Diafiltration** — `src/vlab_doe/models/ufdf.py`
 - **Model:** permeate flux from combined osmotic-pressure / gel-polarization theory; concentration polarization via film theory `J = k · ln(C_wall / C_bulk)`, with mass-transfer coefficient `k` from a Sherwood correlation driven by cross-flow velocity. Mass-balance ODEs over **diavolumes** track retentate concentration and buffer exchange.
 - **Variables:** transmembrane pressure (TMP), cross-flow velocity, feed concentration.
 - **Outputs:** permeate flux vs time, retentate concentration trajectory, protein retention/yield, diavolumes to target.
 
-**1.3 Perturbation module** — `src/downstream_doe/perturbation.py`
+**1.3 Perturbation module** — `src/vlab_doe/perturbation.py`
 - Converts Truth → Experiment: proportional + additive **Gaussian measurement noise**, **systematic effects** (baseline drift, calibration bias), and **batch-to-batch random effects** (jitter on the "true" parameters between runs). Fully seedable.
 
 **DoD:** models run for a nominal parameter set in `notebooks/01`, produce physically sensible curves, conserve mass within tolerance (tested), and the perturbation module yields reproducible noisy replicates for a fixed seed.
@@ -75,7 +75,7 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 
 ### Phase 2 — Traditional DoE: Full Factorial
 *Robustness & capacity characterization — the classical CMC workhorse.*
-- `src/downstream_doe/doe/factorial.py`, `src/downstream_doe/doe/analysis.py`
+- `src/vlab_doe/doe/factorial.py`, `src/vlab_doe/doe/analysis.py`
 - **Design:** pick 2–3 CPPs (e.g. load pH, salt / gradient slope, load density); generate 2-level & 3-level full factorial **+ center points** (`pyDOE`); run the virtual lab (with perturbation) at each design point.
 - **Analysis (`statsmodels`):** OLS with main effects + interactions (+ quadratics → response surface), **ANOVA table**, Pareto-of-effects, main-effect & interaction plots, response-surface contour plots.
 - **Narrative:** translate significant effects into **proven acceptable ranges (PAR)** and a robustness statement suitable for a **CMC regulatory submission**.
@@ -87,7 +87,7 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 
 ### Phase 3 — Space-Filling Design: Latin Hypercube Sampling
 *Efficient exploration of a higher-dimensional space (the job ad's named method).*
-- `src/downstream_doe/doe/lhs.py`
+- `src/vlab_doe/doe/lhs.py`
 - **Design:** scale to **5+ factors**; LHS via `scipy.stats.qmc.LatinHypercube` with maximin / low-correlation optimization (`pyDOE.lhs` cross-check). Quantify coverage vs a full grid (curse of dimensionality).
 - **Run:** push LHS points through the UF/DF (and/or chromatography) model to **map the design space** for late-stage development.
 - **Data management:** tidy `pandas` DataFrame → parquet/csv under `data/`; cleaning, pairplots, parallel-coordinates, correlation analysis.
@@ -99,7 +99,7 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 
 ### Phase 4 — Advanced Optimization: Bayesian Optimization
 *Innovative experimental design / optimization.*
-- `src/downstream_doe/optimization/surrogate.py`, `src/downstream_doe/optimization/bayesopt.py`
+- `src/vlab_doe/optimization/surrogate.py`, `src/vlab_doe/optimization/bayesopt.py`
 - **Surrogate:** train a Gaussian-Process surrogate on Phase-3 LHS data using **bofire/botorch** (`SingleTaskGP`).
 - **Objective:** **maximize API yield s.t. purity ≥ threshold** — constrained / multi-objective (`qNEHVI`).
 - **Acquisition:** EI / qEI / qNEHVI; sequential BO loop using the virtual lab as the expensive oracle.
@@ -112,7 +112,7 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 
 ### Phase 5 — Uncertainty Quantification & Parameter Estimation
 *Inverse modeling + Bayesian UQ — core mathematical-modeling expertise.*
-- `src/downstream_doe/uq/inverse.py`, `src/downstream_doe/uq/uncertainty.py`
+- `src/vlab_doe/uq/inverse.py`, `src/vlab_doe/uq/uncertainty.py`
 - **Inverse modeling:** from noisy synthetic data, recover mechanistic parameters (SMA characteristic charge & equilibrium constant, mass-transfer coefficient, membrane resistance). Deterministic via `scipy.optimize.least_squares`; **Bayesian via `emcee` MCMC** with **`arviz`** diagnostics/plots.
 - **Aleatoric vs epistemic:** aleatoric = likelihood noise variance (from the perturbation model); epistemic = parameter-posterior spread + model-form uncertainty; propagate to predictions via the posterior predictive.
 - **Reporting:** generate `reports/tech_transfer_report.md` — how the quantified uncertainty impacts **transfer to manufacturing** and the control strategy.
@@ -126,14 +126,14 @@ Each phase below lists: **objective → model/method → libraries → deliverab
 
 - **Language / env:** Python ≥ 3.13, managed with **`uv`** (`uv sync`, `uv run`).
 - **Core libs:** `numpy`/`scipy` (ODE/PDE, optimization, QMC), `pandas` (data), `scikit-learn` (regression utilities), `statsmodels` (ANOVA/RSM), `bofire`/`botorch`/`gpytorch` (GP + BO), `emcee` + `arviz` (Bayesian inference), `matplotlib`/`plotly` (viz).
-- **Package:** `src/downstream_doe/` (src layout). `config.py` centralizes a `make_rng(seed)` helper and `DATA_DIR`/`RESULTS_DIR` paths so every phase is reproducible.
+- **Package:** `src/vlab_doe/` (src layout). `config.py` centralizes a `make_rng(seed)` helper and `DATA_DIR`/`RESULTS_DIR` paths so every phase is reproducible.
 - **Repo layout:**
   ```
-  src/downstream_doe/{config,viz,perturbation}.py
-  src/downstream_doe/models/{chromatography,ufdf}.py
-  src/downstream_doe/doe/{factorial,lhs,analysis}.py
-  src/downstream_doe/optimization/{surrogate,bayesopt}.py
-  src/downstream_doe/uq/{inverse,uncertainty}.py
+  src/vlab_doe/{config,viz,perturbation}.py
+  src/vlab_doe/models/{chromatography,ufdf}.py
+  src/vlab_doe/doe/{factorial,lhs,analysis}.py
+  src/vlab_doe/optimization/{surrogate,bayesopt}.py
+  src/vlab_doe/uq/{inverse,uncertainty}.py
   notebooks/0{1..5}_*.ipynb
   reports/tech_transfer_report.md
   data/{raw,processed}/   results/   tests/

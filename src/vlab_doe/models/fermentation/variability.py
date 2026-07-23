@@ -8,7 +8,7 @@ uncertainty* added in :mod:`.observe` and the within-batch *process noise* of th
 
 :func:`sample_batch` draws one perturbed :class:`~.engine.FermentationSetup` from a population
 described by :class:`BatchVariability`.  Multiplicative factors are drawn lognormally
-(``value · exp(N(0, sd))``), exactly as :func:`downstream_doe.perturbation.jitter_parameters`
+(``value · exp(N(0, sd))``), exactly as :func:`vlab_doe.perturbation.jitter_parameters`
 does, so for small ``sd`` the spread is ≈ a fractional CV; the temperature offset is additive.
 :func:`run_batches` simulates an ensemble of such draws.
 """
