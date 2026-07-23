@@ -52,4 +52,9 @@ pandoc main.tex \
   --css="monograph.css" \
   --output="$OUT_DIR/monograph.html"
 
+# Pandoc's default html5 template injects a <script> from polyfill.io, a domain
+# that was taken over in 2024 and no longer serves a valid certificate. MathJax
+# 3 needs no polyfill on any modern browser, so strip that line from the output.
+sed -i '/polyfill\.io/d' "$OUT_DIR/monograph.html"
+
 echo ">> Done: $OUT_DIR/monograph.html  (figures + monograph.css alongside it)"
