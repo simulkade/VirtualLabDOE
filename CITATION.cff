@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or its monograph, please cite it as below."
+title: "Virtual Lab DOE — A Monograph"
+type: software
+authors:
+  - given-names: "Ali A."
+    family-names: Eftekhari
+    email: aliak@dtu.dk
+    affiliation: "DTU Sustain, Technical University of Denmark; Simulkade ApS"
+version: 0.4.0
+date-released: 2026-07-24
+license: MIT
+repository-code: "https://github.com/simulkade/VirtualLabDOE"
+url: "https://simulkade.github.io/VirtualLabDOE/"
+doi: 10.5281/zenodo.21527040
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21527040
+    description: "Concept DOI — always resolves to the latest version"
+  - type: doi
+    value: 10.5281/zenodo.21527041
+    description: "Version DOI — this v0.4.0 release"
