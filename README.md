@@ -12,6 +12,10 @@
   <a href="https://simulkade.github.io/VirtualLabDOE/">
     <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Read%20the%20Monograph-HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="Read the monograph (HTML, in browser)">
   </a>
+  &nbsp;
+  <a href="https://doi.org/10.5281/zenodo.21527040">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21527040.svg" alt="DOI">
+  </a>
 </p>
 
 <p align="center"><em>A book-length treatment of the science inside the package — every figure generated directly from the source.<br>Download the typeset <strong>PDF</strong>, or read the <strong>HTML</strong> edition straight in your browser (figures &amp; styling embedded).</em></p>
@@ -133,6 +137,16 @@ results/              figures & fitted parameters (gitignored)
 implementation.md     mathematical & engineering notes for every module
 plan.md               development plan and rationale
 ```
+
+---
+
+## Citation
+
+If you use Virtual Lab DOE or its monograph in your work, please cite it via its Zenodo DOI:
+
+> Ali A. Eftekhari. *Virtual Lab DOE — A Monograph.* Zenodo, 2026. DOI: [10.5281/zenodo.21527040](https://doi.org/10.5281/zenodo.21527040)
+
+The DOI above is the *concept* DOI and always resolves to the latest version; the specific **v0.4.0** release is archived at [10.5281/zenodo.21527041](https://doi.org/10.5281/zenodo.21527041).
 
 ---
 
