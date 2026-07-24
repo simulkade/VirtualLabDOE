@@ -1,4 +1,4 @@
-"""vlab_doe — a virtual laboratory for API process characterization & advanced DoE.
+"""vlab_doe — a virtual laboratory for bioprocess development, benchtop experiments & advanced DoE.
 
 The package is organized to mirror the project's five phases:
 
@@ -11,6 +11,6 @@ The package is organized to mirror the project's five phases:
 See ``plan.md`` at the repo root for the full development plan.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.4.0"
 
 __all__ = ["__version__"]

@@ -1,6 +1,8 @@
-# VlabDOE
+# Virtual Lab DOE
 
-**A virtual laboratory for downstream-bioprocess characterization and advanced Design of Experiments (DoE).**
+**A virtual laboratory for bioprocess development, benchtop chemical-engineering experiments, and advanced Design of Experiments (DoE).**
+
+> This work is by **Ali A. Eftekhari** and is provided here free of charge, with no guarantees. For academic or commercial collaboration, or to extend it for your own work, contact **aae@simulkade.dk** (Simulkade ApS) or **aliak@dtu.dk** (DTU Sustain).
 
 <p align="center">
   <a href="https://github.com/simulkade/VirtualLabDOE/releases/latest/download/monograph.pdf">
@@ -14,7 +16,7 @@
 
 <p align="center"><em>A book-length treatment of the science inside the package — every figure generated directly from the source.<br>Download the typeset <strong>PDF</strong>, or read the <strong>HTML</strong> edition straight in your browser (figures &amp; styling embedded).</em></p>
 
-VlabDOE pairs first-principles process models with a modern DoE / optimization / uncertainty-quantification toolkit. Mechanistic models of **chromatography** and **ultrafiltration/diafiltration (UF/DF)** provide a fully-observable *"Mechanistic Truth"*; a perturbation layer turns that truth into noisy *"Virtual Experiments"*; and classical DoE, Bayesian optimization, and uncertainty quantification are exercised against that known ground truth. Because the truth is known, every method can be benchmarked for accuracy, efficiency, and robustness — something impossible with real wet-lab data alone.
+Virtual Lab DOE pairs first-principles process models with a modern DoE / optimization / uncertainty-quantification toolkit. Mechanistic models spanning the bioprocess — **preparative chromatography**, **ultrafiltration/diafiltration (UF/DF)**, a stochastic **milk fermentation (yogurt)**, and four **benchtop chemical-engineering systems** (pipe pressure drop, falling-ball viscometry, yogurt rheology, ester hydrolysis) — provide a fully-observable *"Mechanistic Truth"*; a perturbation layer turns that truth into noisy *"Virtual Experiments"*; and classical DoE, Bayesian optimization, and uncertainty quantification are exercised against that known ground truth. Because the truth is known, every method can be benchmarked for accuracy, efficiency, and robustness — something impossible with real wet-lab data alone.
 
 The workflow mirrors a real **QbD / process-characterization** campaign: define critical process parameters (CPPs), screen them with a factorial design, map the design space with space-filling sampling, drive toward an optimum with Bayesian optimization, and finally quantify how much of the residual uncertainty is reducible (epistemic) versus irreducible process noise (aleatoric).
 

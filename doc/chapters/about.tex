@@ -2,29 +2,38 @@
 \addcontentsline{toc}{chapter}{About This Monograph}
 \markboth{About This Monograph}{About This Monograph}
 
-Downstream processing---the sequence of unit operations that turns a crude
-biological harvest into a pure, formulated drug substance---is where much of the
-cost, the risk, and the intellectual difficulty of a modern biomanufacturing
-process resides. Of those unit operations, \emph{preparative chromatography} is
-the workhorse. It is also, mathematically, the richest: a chromatographic column
-is a distributed-parameter system in which convection, dispersion, and
-nonlinear, multi-component adsorption interact, and whose behaviour swings by
-orders of magnitude as a handful of mobile-phase variables are turned.
+Turning a biological product from a living culture into a finished, specified
+material is a chain of very different operations: a \emph{fermentation} that grows
+the molecule, a sequence of \emph{separations} that purifies it, and the physical
+measurements---viscosity, texture, pressure drop---that characterise it along the
+way. Each is expensive to run, each obeys its own mechanism, and each is a place
+where a well-chosen \emph{experiment} saves weeks and a badly chosen one wastes
+them. This is exactly the setting in which \emph{Design of Experiments} (DoE)
+earns its keep---and exactly the setting this monograph builds a virtual
+laboratory for. Among the process operations, \emph{preparative chromatography} is
+the workhorse and, mathematically, the richest: a chromatographic column is a
+distributed-parameter system in which convection, dispersion, and nonlinear,
+multi-component adsorption interact, and whose behaviour swings by orders of
+magnitude as a handful of mobile-phase variables are turned. It is treated here in
+depth, but it is one system among several.
 
 This monograph documents the scientific content of the \code{VlabDOE}
-software package: a \emph{virtual laboratory} for downstream bioprocess
-development. The package does two things. First, it provides mechanistic,
-first-principles models of chromatography that act as a synthetic ``ground
-truth''---an oracle that, when probed with a set of process conditions, returns
-the chromatogram and the pool quality attributes that a real experiment would.
+(Virtual Lab DOE) software package: a \emph{virtual laboratory} for bioprocess
+development and for the simple benchtop systems on which experimental design is
+best learned. The package does two things. First, it provides mechanistic,
+first-principles models---of preparative chromatography, of
+ultrafiltration/diafiltration, of a living milk fermentation, and of a handful of
+benchtop chemical-engineering experiments---that act as a synthetic ``ground
+truth'': an oracle that, when probed with a set of process conditions, returns the
+chromatogram, pH curve, or instrument reading that a real experiment would.
 Second, it provides the statistical and machine-learning machinery of
 \emph{Design of Experiments} (DoE) that one uses to interrogate such an oracle
 efficiently: factorial designs, space-filling designs, latent-variable analysis,
-and adaptive Bayesian optimisation.
+covering-array screening, and adaptive Bayesian optimisation.
 
-The document is organised into two parts. \textbf{Part~I (Foundations)} is for the
+The document is organised into three parts. \textbf{Part~I (Foundations)} is for the
 reader who arrives strong in one of this book's two parent disciplines but new to
-the other. Because the monograph fuses statistics with downstream separation
+the other. Because the monograph fuses statistics with process and separation
 science, it is easy to assume of either field a fluency the reader may not yet
 have; these two chapters supply it, each built from the ground up but curated to
 exactly the ideas the later chapters use.
@@ -72,6 +81,20 @@ exactly the ideas the later chapters use.
   the resulting data.
 \end{itemize}
 
+\textbf{Part~III (A Benchtop Sandbox)} steps deliberately down in complexity, to
+systems whose mechanism is one or two equations rather than a system of coupled
+PDEs.
+
+\begin{itemize}
+  \item \textbf{Chapter~\ref{ch:benchtop}} assembles four \emph{benchtop}
+  systems---pressure drop in a pipe, a falling-ball viscometer, back-extrusion of
+  a set yogurt, and the hydrolysis of methyl acetate---each an experiment a
+  student could run in an afternoon. Between them they exhibit the response
+  \emph{shapes}---power law, calibration, threshold, and reaction kinetics---that
+  most often decide which design to reach for, making them a sandbox in which the
+  behaviour of an experimental design is laid bare with nothing to hide behind.
+\end{itemize}
+
 Throughout, the mathematics is tied back to the code. Where a symbol in an
 equation corresponds to an argument of a function or a field of a data
 structure, we say so, in \code{typewriter} font. The intent is that a reader can
@@ -94,4 +117,4 @@ The figures in this monograph are generated directly from the package source by
 \code{make\_foundations\_figures.py}); the chromatograms are real numerical
 solutions of the models described in the text, and even the introductory figures
 are computed from the small teaching module
-\code{downstream\_doe.foundations}---not schematics.\par}
+\code{vlab\_doe.foundations}---not schematics.\par}

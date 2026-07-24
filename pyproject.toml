@@ -1,7 +1,7 @@
 [project]
 name = "VlabDOE"
-version = "0.3.0"
-description = "Virtual laboratory for downstream bioprocess characterization & advanced DoE (chromatography + UF/DF mechanistic models, factorial/LHS designs, Bayesian optimization, and UQ)"
+version = "0.4.0"
+description = "Virtual laboratory for bioprocess development and benchtop chemical-engineering experiments, with advanced Design of Experiments (chromatography, UF/DF, stochastic milk fermentation, and benchtop mechanistic models; factorial/LHS designs, Bayesian optimization, and UQ)"
 readme = "README.md"
 requires-python = ">=3.13"
 authors = [{ name = "Ali A. Eftekhari" }]

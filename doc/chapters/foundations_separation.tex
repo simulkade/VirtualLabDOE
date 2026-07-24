@@ -19,7 +19,7 @@ hard to separate, how an \emph{adsorption isotherm} governs everything, how a
 \emph{fermentation} is as a unit operation. As in Chapter~\ref{ch:stats}, the
 treatment is self-contained but curated to exactly what Chapters~\ref{ch:models}
 through~\ref{ch:ferment} use, and the quantitative figures are generated from a
-small teaching module (\code{downstream\_doe.foundations.separation\_demo}).
+small teaching module (\code{vlab\_doe.foundations.separation\_demo}).
 
 %==============================================================================
 \section{The bioprocess and its downstream half}
@@ -32,7 +32,9 @@ the output is a turbid, dilute broth in which the product is a small fraction of
 a vast chemical zoo. \emph{Downstream} is everything after: the sequence of
 \emph{unit operations}---discrete, repeatable processing steps---that clarifies,
 concentrates, and purifies that broth into a pure drug substance
-(Figure~\ref{fig:sep-train}). This monograph lives almost entirely downstream.
+(Figure~\ref{fig:sep-train}). The chromatography models at the heart of
+Part~II live in this downstream half, though the monograph ranges beyond
+it---upstream into fermentation, and out to the benchtop.
 
 A platform downstream train for an antibody runs: \emph{harvest and
 clarification} (centrifuge and filter away the cells and debris); \emph{capture}
@@ -56,8 +58,9 @@ designs of Chapter~\ref{ch:design} are for.
 \centering
 \includegraphics[width=\linewidth]{foundations_bioprocess.png}
 \caption[The bioprocess train]{A platform bioprocess. \emph{Upstream}
-(fermentation/cell culture) makes the molecule; \emph{downstream}---the subject of
-this book---clarifies, captures, polishes, and formulates it. Each box is a
+(fermentation/cell culture) makes the molecule; \emph{downstream}---the focus of
+Chapters~\ref{ch:models} and~\ref{ch:design}---clarifies, captures, polishes, and
+formulates it. Each box is a
 \emph{unit operation}, and purity increases from left to right. The
 chromatographic steps (capture and polish) are modelled in
 Chapter~\ref{ch:models}; the fermentation in Chapter~\ref{ch:ferment}.}
