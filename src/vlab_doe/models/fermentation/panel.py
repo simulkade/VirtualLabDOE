@@ -165,6 +165,7 @@ def panel_interaction_matrix(
     *,
     baseline_cooperation: float = BASELINE_PROTO_COOPERATION,
     champion_synergy: float | None = None,
+    interaction_scale: float = 1.0,
 ) -> np.ndarray:
     """Assemble the ``(16, 16)`` interaction matrix from the baseline plus named entries.
 
@@ -178,6 +179,11 @@ def panel_interaction_matrix(
     champion_synergy:
         Optional override for the strength of the :data:`CHAMPION_PAIR` entry, used to tune how
         far ahead of the field the ground-truth pair sits.
+    interaction_scale:
+        Multiplies the *whole* finished matrix.  ``1.0`` is the calibrated panel; ``0.0`` makes
+        the strains behave purely additively.  Sweeping it is how the covering-array study asks
+        the question those designs are normally asked in practice — *how strong may the pairwise
+        interactions get before a pair-coverage design stops working?*
     """
     index = {name: i for i, name in enumerate(names)}
     n = len(names)
@@ -202,20 +208,21 @@ def panel_interaction_matrix(
             inter[index[donor], index[receiver]] = k
 
     np.fill_diagonal(inter, 0.0)
-    return inter
+    return inter * float(interaction_scale)
 
 
 def yogurt_strain_panel(
     *,
     baseline_cooperation: float = BASELINE_PROTO_COOPERATION,
     champion_synergy: float | None = None,
+    interaction_scale: float = 1.0,
     interaction_half: float = 0.08,
 ) -> StrainLibrary:
     """Build the fixed 16-strain candidate panel with its planted interactions.
 
     Parameters
     ----------
-    baseline_cooperation, champion_synergy:
+    baseline_cooperation, champion_synergy, interaction_scale:
         Passed to :func:`panel_interaction_matrix`.
     interaction_half:
         Half-saturation biomass of the stimulation term (see :class:`~.strains.Consortium`).
@@ -229,6 +236,7 @@ def yogurt_strain_panel(
         names,
         baseline_cooperation=baseline_cooperation,
         champion_synergy=champion_synergy,
+        interaction_scale=interaction_scale,
     )
     return StrainLibrary(strains=strains, interaction=inter, interaction_half=interaction_half)
 
