@@ -1037,6 +1037,11 @@ def greedy_exchange_search(
     incumbent = tuple(sorted(rng.choice(lab.n_strains, size=2, replace=False)))
     best = evaluate(incumbent)
     while b.can():
+        # ``evaluate`` is free for a pair already run, so a sweep that only revisits known pairs
+        # costs nothing and changes nothing.  Once the whole space is cached that is *every*
+        # sweep, and without this guard the loop spins forever on a budget it can no longer
+        # spend.  Track the spend and stop when a full sweep buys no new experiment.
+        spent_before = b.spent
         improved = False
         for slot in (0, 1):
             keep = incumbent[1 - slot]
@@ -1056,6 +1061,8 @@ def greedy_exchange_search(
                 break
             if best is None or v < best:
                 best = v
+        if b.spent == spent_before:           # nothing new left to try — the search is done
+            break
 
     choice, observed = _pick(means)
     return SearchResult(

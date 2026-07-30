@@ -173,6 +173,19 @@ def test_thompson_sampling_proposes_multi_strain_blends(library):
     assert (res.trace["size"] > 2).any()
 
 
+@pytest.mark.parametrize("budget", [120, 180, 300])
+def test_greedy_exchange_terminates_once_the_space_is_exhausted(library, budget):
+    """Regression: it re-reads cached pairs for free, so a full sweep can spend nothing.
+
+    With no guard the loop spins forever at budgets large enough to visit all 120 pairs — the
+    budget can no longer be spent, so ``b.can()`` never turns false.
+    """
+    lab = VirtualStrainLab(library=library, seed=5)
+    res = STRATEGIES["greedy exchange"](lab, budget, np.random.default_rng(2))
+    assert res.n_experiments <= budget
+    assert res.notes["pairs_tested"] <= len(lab.all_pairs())
+
+
 def test_exhaustive_scan_finds_the_champion_with_replication(library):
     """Given enough budget to replicate, brute force must land on the true best pair."""
     lab = VirtualStrainLab(library=library, seed=5)
