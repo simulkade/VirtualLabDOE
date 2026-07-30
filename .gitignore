@@ -19,3 +19,9 @@ results/*
 # Monograph: generated figures and LaTeX/Pandoc build output
 doc/figures/*.png
 doc/build/
+
+# Kept locally, not tracked
+notebooks/10_strain_pair_screening.ipynb
+notebooks/11_covering_array_designs.ipynb
+scripts/run_strain_pair_study.py
+scripts/run_covering_array_study.py
